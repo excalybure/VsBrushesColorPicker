@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using Microsoft.VisualStudio.PlatformUI;
+using Microsoft.VisualStudio.Shell;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +18,24 @@ namespace VsBrushesColorPicker
         {
             InitializeComponent();
             Loaded += OnLoaded;
+            Unloaded += OnUnloaded;
+            VSColorTheme.ThemeChanged += OnThemeChanged;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             Loaded -= OnLoaded;
+            LoadColors();
+        }
+
+        private void OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            Unloaded -= OnUnloaded;
+            VSColorTheme.ThemeChanged -= OnThemeChanged;
+        }
+
+        private void OnThemeChanged(ThemeChangedEventArgs e)
+        {
             LoadColors();
         }
 
