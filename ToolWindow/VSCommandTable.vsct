@@ -8,11 +8,13 @@
 
   <Commands package="ColorPickerToolWindow">
     <!--This section defines the elements the user can interact with, like a menu command or a button or combo box in a toolbar. -->
+    <Bitmaps>
+      <Bitmap guid="ColorPickerToolWindowIcons" href="Resources\Icon_16.png" usedList="ColorPickerIcon"/>
+    </Bitmaps>
     <Buttons>
       <Button guid="ColorPickerToolWindow" id="ColorPickerCommand" priority="0x0100" type="Button">
         <Parent guid="VSMainMenu" id="View.DevWindowsGroup.OtherWindows.Group1"/>
-        <Icon guid="ImageCatalogGuid" id="ToolWindow" />
-        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Icon guid="ColorPickerToolWindowIcons" id="ColorPickerIcon" />
         <Strings>
           <ButtonText>VsBrushes Color Picker</ButtonText>
           <LocCanonicalName>.View.ColorPickerToolWindow</LocCanonicalName>
@@ -24,6 +26,9 @@
   <Symbols>
     <GuidSymbol name="ColorPickerToolWindow" value="{91CBB37A-9AA9-440E-AD08-08BC1794C6A9}">
       <IDSymbol name="ColorPickerCommand" value="0x0100" />
+    </GuidSymbol>
+    <GuidSymbol name="ColorPickerToolWindowIcons" value="{A5C8F5E3-6D4B-4F7E-9C8A-1B2E3D4F5A6B}">
+      <IDSymbol name="ColorPickerIcon" value="1" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>
