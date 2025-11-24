@@ -110,5 +110,10 @@ namespace VsBrushesColorPicker
             ClassText.Text = "In class: " + entry.InClass;
             TypeText.Text = "Type: " + entry.Type;
         }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadColors();
+        }
     }
 }
