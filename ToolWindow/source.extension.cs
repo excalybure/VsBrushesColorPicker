@@ -9,8 +9,8 @@ namespace VsBrushesColorPicker
     internal sealed partial class Vsix
     {
         public const string Id = "VsBrushesColorPicker.4677A28E-5675-44BF-85CC-A8AFF3E56DF5";
-        public const string Name = "VsBrushesColorPicker";
-        public const string Description = @"Tool to view VsBrushes colors";
+        public const string Name = "VsBrushes Color Picker";
+        public const string Description = @"Browse and explore all VsBrushes colors in Visual Studio. Features include live preview with color swatches, search and filter, auto-refresh on theme changes, and detailed color information. Perfect for Visual Studio extension developers who need to find the right theme colors for their UI.";
         public const string Language = "en-US";
         public const string Version = "1.0";
         public const string Author = "Stephane Etienne";
