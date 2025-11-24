@@ -46,6 +46,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ColorEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\VwsBrushesColorPickerCommand.cs" />
     <Compile Include="VsBrushesColorPickerPackage.cs" />

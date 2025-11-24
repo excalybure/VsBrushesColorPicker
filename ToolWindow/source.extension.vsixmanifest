@@ -13,7 +13,7 @@
         </InstallationTarget>
     </Installation>
     <Prerequisites>
-        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,)" DisplayName="Visual Studio core editor" />
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" DisplayName="Visual Studio core editor" />
     </Prerequisites>
     <Assets>
         <!-- keep the pkgdef so the package registers -->

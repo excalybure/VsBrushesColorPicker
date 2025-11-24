@@ -16,8 +16,7 @@ namespace VsBrushesColorPicker
 
         public override async Task<FrameworkElement> CreateAsync(int toolWindowId, CancellationToken cancellationToken)
         {
-            Version vsVersion = await VS.Shell.GetVsVersionAsync();
-            return new ColorPickerToolWindowControl(vsVersion);
+            return new ColorPickerToolWindowControl();
         }
 
         [Guid("03030460-e1a2-49ab-a4c5-b7b9cfc2a4df")]
