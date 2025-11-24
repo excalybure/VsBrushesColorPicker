@@ -11,6 +11,14 @@ A Visual Studio extension that provides an easy way to browse and explore all av
 - **Manual Refresh**: Refresh button to manually reload colors if needed
 - **Detailed Information**: View color name, class, and type information for each color
 
+## Screenshots
+
+### Dark Theme
+![VsBrushes Color Picker - Dark Theme](screenshots/dark-theme.png)
+
+### Light Theme
+![VsBrushes Color Picker - Light Theme](screenshots/light-theme.png)
+
 ## Installation
 
 1. Download the latest release from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/) or [GitHub Releases](https://github.com/excalybure/VsBrushesColorPicker/releases)
