@@ -1,5 +1,8 @@
-﻿using Microsoft.VisualStudio.Shell;
+﻿using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 using System;
+using System.ComponentModel.Design;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Task = System.Threading.Tasks.Task;
@@ -24,13 +27,19 @@ namespace VsBrushesColorPicker
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
+    [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(VsBrushesColorPickerPackage.PackageGuidString)]
+    [ProvideAutoLoad(VSConstants.UICONTEXT.ShellInitialized_string, PackageAutoLoadFlags.BackgroundLoad)]
+    [ProvideToolWindow(typeof(ColorListToolWindow))]
     public sealed class VsBrushesColorPickerPackage : AsyncPackage
     {
         /// <summary>
         /// VsBrushesColorPickerPackage GUID string.
         /// </summary>
         public const string PackageGuidString = "0d8add0f-d9d9-40e9-968a-537edefb3137";
+
+        public const int CommandId = 0x0100;
+        public static readonly Guid CommandSet = new Guid("5e9b6f9d-5d5c-4b0b-9e5c-1e2f8d5a9b11");
 
         #region Package Members
 
@@ -43,9 +52,31 @@ namespace VsBrushesColorPicker
         /// <returns>A task representing the async work of package initialization, or an already completed task if there is none. Do not return null from this method.</returns>
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
-            // When initialized asynchronously, the current thread may be a background thread at this point.
-            // Do any initialization that requires the UI thread after switching to the UI thread.
-            await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+            if (await GetServiceAsync(typeof(IMenuCommandService)) is OleMenuCommandService commandService)
+            {
+                var cmdId = new CommandID(CommandSet, CommandId);
+                var menuItem = new OleMenuCommand(ExecuteShowToolWindow, cmdId);
+                commandService.AddCommand(menuItem);
+            }
+        }
+
+        private void ExecuteShowToolWindow(object sender, EventArgs e)
+        {
+            JoinableTaskFactory.RunAsync(async () =>
+            {
+                await ShowColorListToolWindowAsync();
+            }).FileAndForget("VsBrushesColorPicker/ShowToolWindow");
+        }
+
+        private async Task ShowColorListToolWindowAsync()
+        {
+            await JoinableTaskFactory.SwitchToMainThreadAsync();
+            ToolWindowPane window = await ShowToolWindowAsync(typeof(ColorListToolWindow), 0, true, DisposalToken);
+            if (window?.Frame is IVsWindowFrame windowFrame)
+            {
+                ErrorHandler.ThrowOnFailure(windowFrame.Show());
+            }
         }
 
         #endregion
