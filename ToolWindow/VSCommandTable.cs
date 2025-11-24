@@ -13,8 +13,8 @@ namespace VsBrushesColorPicker
     /// </summary>
     internal sealed partial class PackageGuids
     {
-        public const string guidVsBrushesColorPickerPackageCmdSetString = "5e9b6f9d-5d5c-4b0b-9e5c-1e2f8d5a9b11";
-        public static Guid guidVsBrushesColorPickerPackageCmdSet = new Guid(guidVsBrushesColorPickerPackageCmdSetString);
+        public const string ColorPickerToolWindowString = "91cbb37a-9aa9-440e-ad08-08bc1794c6a9";
+        public static Guid ColorPickerToolWindow = new Guid(ColorPickerToolWindowString);
     }
 
     /// <summary>
@@ -22,7 +22,6 @@ namespace VsBrushesColorPicker
     /// </summary>
     internal sealed partial class PackageIds
     {
-        public const int OtherWindowsGroup = 0x1020;
-        public const int cmdidShowVsBrushesColorDialog = 0x0100;
+        public const int ColorPickerCommand = 0x0100;
     }
 }
