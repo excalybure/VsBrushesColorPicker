@@ -2,8 +2,9 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
         <Identity Id="VsBrushesColorPicker.4677A28E-5675-44BF-85CC-A8AFF3E56DF5" Version="1.0" Language="en-US" Publisher="Stephane Etienne" />
-        <DisplayName>VsBrushesColorPicker</DisplayName>
-        <Description xml:space="preserve">Tool to view VsBrushes colors</Description>
+        <DisplayName>VsBrushes Color Picker</DisplayName>
+        <Description xml:space="preserve">Browse and explore all VsBrushes colors in Visual Studio. Features include live preview with color swatches, search and filter, auto-refresh on theme changes, and detailed color information. Perfect for Visual Studio extension developers who need to find the right theme colors for their UI.</Description>
+        <MoreInfo>https://github.com/excalybure/VsBrushesColorPicker/</MoreInfo>
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Icon.png</PreviewImage>
     </Metadata>
