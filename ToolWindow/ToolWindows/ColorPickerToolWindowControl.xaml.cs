@@ -147,22 +147,54 @@ namespace VsBrushesColorPicker
 
         private void ColorList_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.C && 
+            if (e.Key == System.Windows.Input.Key.C &&
                 (System.Windows.Input.Keyboard.Modifiers & System.Windows.Input.ModifierKeys.Control) == System.Windows.Input.ModifierKeys.Control)
             {
-                var selectedEntry = ColorList.SelectedItem as ColorEntry;
-                if (selectedEntry != null)
+                CopyColorNameToClipboard();
+                e.Handled = true;
+            }
+        }
+
+        private void CopyColorName_Click(object sender, RoutedEventArgs e)
+        {
+            CopyColorNameToClipboard();
+        }
+
+        private void CopyArgbValue_Click(object sender, RoutedEventArgs e)
+        {
+            CopyArgbValueToClipboard();
+        }
+
+        private void CopyColorNameToClipboard()
+        {
+            var selectedEntry = ColorList.SelectedItem as ColorEntry;
+            if (selectedEntry != null)
+            {
+                try
                 {
-                    try
-                    {
-                        Clipboard.SetText(selectedEntry.Name);
-                        e.Handled = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        // Clipboard operations can fail, ignore errors
-                        System.Diagnostics.Debug.WriteLine($"Failed to copy to clipboard: {ex.Message}");
-                    }
+                    Clipboard.SetText(selectedEntry.Name);
+                }
+                catch (Exception ex)
+                {
+                    // Clipboard operations can fail, ignore errors
+                    System.Diagnostics.Debug.WriteLine($"Failed to copy color name to clipboard: {ex.Message}");
+                }
+            }
+        }
+
+        private void CopyArgbValueToClipboard()
+        {
+            var selectedEntry = ColorList.SelectedItem as ColorEntry;
+            if (selectedEntry != null)
+            {
+                try
+                {
+                    Clipboard.SetText(selectedEntry.ArgbHex);
+                }
+                catch (Exception ex)
+                {
+                    // Clipboard operations can fail, ignore errors
+                    System.Diagnostics.Debug.WriteLine($"Failed to copy ARGB value to clipboard: {ex.Message}");
                 }
             }
         }

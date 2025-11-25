@@ -34,6 +34,15 @@
                  Grid.Row="1"
                  SelectionChanged="ColorList_SelectionChanged"
                  PreviewKeyDown="ColorList_PreviewKeyDown">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Copy Color Name" 
+                              InputGestureText="Ctrl+C"
+                              Click="CopyColorName_Click" />
+                    <MenuItem Header="Copy ARGB Value" 
+                              Click="CopyArgbValue_Click" />
+                </ContextMenu>
+            </ListBox.ContextMenu>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel LastChildFill="True">
