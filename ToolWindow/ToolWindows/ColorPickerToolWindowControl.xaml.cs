@@ -145,6 +145,28 @@ namespace VsBrushesColorPicker
             UpdatePreview(ColorList.SelectedItem as ColorEntry);
         }
 
+        private void ColorList_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.C && 
+                (System.Windows.Input.Keyboard.Modifiers & System.Windows.Input.ModifierKeys.Control) == System.Windows.Input.ModifierKeys.Control)
+            {
+                var selectedEntry = ColorList.SelectedItem as ColorEntry;
+                if (selectedEntry != null)
+                {
+                    try
+                    {
+                        Clipboard.SetText(selectedEntry.Name);
+                        e.Handled = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Clipboard operations can fail, ignore errors
+                        System.Diagnostics.Debug.WriteLine($"Failed to copy to clipboard: {ex.Message}");
+                    }
+                }
+            }
+        }
+
         private void UpdatePreview(ColorEntry entry)
         {
             if (entry == null)

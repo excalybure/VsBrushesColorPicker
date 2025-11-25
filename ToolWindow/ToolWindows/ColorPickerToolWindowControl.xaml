@@ -32,7 +32,8 @@
         </Grid>
         <ListBox x:Name="ColorList"
                  Grid.Row="1"
-                 SelectionChanged="ColorList_SelectionChanged">
+                 SelectionChanged="ColorList_SelectionChanged"
+                 PreviewKeyDown="ColorList_PreviewKeyDown">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <DockPanel LastChildFill="True">
