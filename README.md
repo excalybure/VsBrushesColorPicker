@@ -6,10 +6,12 @@ A Visual Studio extension that provides an easy way to browse and explore all av
 
 - **Browse All VsBrushes Colors**: View a complete list of all colors from the `Microsoft.VisualStudio.Shell.VsBrushes` class
 - **Live Preview**: See real-time color swatches with their current values based on the active theme
-- **Search & Filter**: Quickly find colors by name using the built-in filter box
+- **ARGB Color Values**: Display colors in ARGB hexadecimal format (e.g., #FF057895) for easy use in code
+- **Copy to Clipboard**: Quickly copy color names or ARGB values with Ctrl+C or right-click context menu
+- **Search & Filter**: Quickly find colors by name using the built-in filter box with search history
 - **Auto-Refresh on Theme Change**: Colors automatically update when you change Visual Studio's theme or system theme
 - **Manual Refresh**: Refresh button to manually reload colors if needed
-- **Detailed Information**: View color name, class, and type information for each color
+- **Detailed Information**: View color name, ARGB value, class, and type information for each color
 
 ## Screenshots
 
@@ -53,8 +55,16 @@ A Visual Studio extension that provides an easy way to browse and explore all av
 The preview pane at the bottom shows:
 - **Color Swatch**: Large preview of the selected color
 - **Name**: The property name (e.g., `ToolWindowBackgroundBrushKey`)
+- **ARGB**: The color in hexadecimal format (e.g., `#FF057895`)
 - **In class**: The class containing the color (VsBrushes)
 - **Type**: The full type name
+
+#### Copying Colors
+- **Ctrl+C**: Copy the selected color name to the clipboard
+- **Right-click menu**: 
+  - Select "Copy Color Name" to copy the property name (e.g., `AccentBorderKey`)
+  - Select "Copy ARGB Value" to copy the hexadecimal color value (e.g., `#FF057895`)
+- Paste the copied values directly into your code or documentation
 
 ## Why Use This Extension?
 
@@ -99,6 +109,13 @@ In XAML:
 Please report issues on the [GitHub Issues page](https://github.com/excalybure/VsBrushesColorPicker/issues).
 
 ## Changelog
+
+### Version 1.1
+- Added ARGB hexadecimal color display
+- Added copy to clipboard functionality (Ctrl+C)
+- Added right-click context menu for copying color names or ARGB values
+- Improved search with ComboBox and search history
+- Fixed minor UI issues
 
 ### Version 1.0
 - Initial release
