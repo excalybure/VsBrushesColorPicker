@@ -58,6 +58,7 @@
                         BorderThickness="1"
                         Margin="0,0,0,6" />
                 <TextBlock x:Name="NameText" FontWeight="SemiBold" />
+                <TextBlock x:Name="ArgbText" Margin="0,2,0,0" FontFamily="Consolas" />
                 <TextBlock x:Name="ClassText" Margin="0,2,0,0" />
                 <TextBlock x:Name="TypeText" Margin="0,2,0,0" />
             </StackPanel>

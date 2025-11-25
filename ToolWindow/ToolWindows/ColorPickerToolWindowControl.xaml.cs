@@ -56,13 +56,14 @@ namespace VsBrushesColorPicker
                     var resource = TryFindResource(key);
                     if (resource is Brush brush)
                     {
-                        var color = (brush as SolidColorBrush)?.Color;
+                        var color = (brush as SolidColorBrush)?.Color ?? Colors.Transparent;
                         _all.Add(new ColorEntry
                         {
                             Name = prop.Name,
                             Brush = brush,
+                            Color = color,
                             InClass = "VsBrushes",
-                            Type = prop.ReflectedType.FullName
+                            Type = "SolidColorBrush"
                         });
                     }
                 }
@@ -114,6 +115,7 @@ namespace VsBrushesColorPicker
             {
                 Preview.Background = Brushes.Transparent;
                 NameText.Text = string.Empty;
+                ArgbText.Text = string.Empty;
                 ClassText.Text = string.Empty;
                 TypeText.Text = string.Empty;
                 return;
@@ -121,6 +123,7 @@ namespace VsBrushesColorPicker
 
             Preview.Background = entry.Brush;
             NameText.Text = "Name: " + entry.Name;
+            ArgbText.Text = "ARGB: " + entry.ArgbHex;
             ClassText.Text = "In class: " + entry.InClass;
             TypeText.Text = "Type: " + entry.Type;
         }
