@@ -12,7 +12,7 @@ namespace VsBrushesColorPicker
         public const string Name = "VsBrushes Color Picker";
         public const string Description = @"Browse and explore all VsBrushes colors in Visual Studio. Features include live preview with color swatches, search and filter, auto-refresh on theme changes, and detailed color information. Perfect for Visual Studio extension developers who need to find the right theme colors for their UI.";
         public const string Language = "en-US";
-        public const string Version = "1.1";
+        public const string Version = "1.2";
         public const string Author = "Stephane Etienne";
         public const string Tags = "";
         public const bool IsPreview = false;
