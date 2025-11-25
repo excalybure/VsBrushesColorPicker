@@ -13,10 +13,13 @@ namespace VsBrushesColorPicker
     public partial class ColorPickerToolWindowControl : UserControl
     {
         private List<ColorEntry> _all;
+        private List<string> _searchHistory;
+        private const int MaxHistoryItems = 10;
 
         public ColorPickerToolWindowControl()
         {
             InitializeComponent();
+            _searchHistory = new List<string>();
             Loaded += OnLoaded;
             Unloaded += OnUnloaded;
             VSColorTheme.ThemeChanged += OnThemeChanged;
@@ -99,9 +102,42 @@ namespace VsBrushesColorPicker
             }
         }
 
-        private void FilterBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void FilterBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                AddToSearchHistory(FilterBox.Text);
+            }
+            ApplyFilter();
+        }
+
+        private void FilterBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ApplyFilter();
+        }
+
+        private void AddToSearchHistory(string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                return;
+            }
+
+            // Remove if already exists to avoid duplicates
+            _searchHistory.Remove(searchText);
+            
+            // Add to the beginning of the list
+            _searchHistory.Insert(0, searchText);
+            
+            // Keep only the most recent items
+            if (_searchHistory.Count > MaxHistoryItems)
+            {
+                _searchHistory.RemoveAt(_searchHistory.Count - 1);
+            }
+            
+            // Update ComboBox items
+            FilterBox.ItemsSource = null;
+            FilterBox.ItemsSource = _searchHistory;
         }
 
         private void ColorList_SelectionChanged(object sender, SelectionChangedEventArgs e)
